@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "62576518867",
+    "firebase_url": "https://cardscannersample.firebaseio.com",
+    "project_id": "cardscannersample",
+    "storage_bucket": "cardscannersample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62576518867:android:4dec150858a625e5865626",
+        "android_client_info": {
+          "package_name": "com.example.cardsnanerssamples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62576518867-nueusqm9pnp6kl8onovcd0il2l16vlt5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5la-VVFglTid67i-fxX4yExHndvP09o4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "62576518867-nueusqm9pnp6kl8onovcd0il2l16vlt5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
