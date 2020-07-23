@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == SCAN_REQUEST_CODE) {
             if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
                 val scanResult: CreditCard? =
-                    intent.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
+                    data.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
                 Log.d(
                     "deb@",
                     "scanResult ${scanResult?.formattedCardNumber} ${scanResult?.redactedCardNumber} ${scanResult?.cardNumber} intent ${data.hasExtra(
