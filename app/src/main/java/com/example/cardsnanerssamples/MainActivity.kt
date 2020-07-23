@@ -41,15 +41,9 @@ class MainActivity : AppCompatActivity() {
     fun startCardIoActivity() {
         callCode = CARDIO
         val scanIntent = Intent(this, CardIOActivity::class.java)
-        scanIntent.apply {
-            putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true)
-            putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, false)
-            putExtra(CardIOActivity.EXTRA_REQUIRE_POSTAL_CODE, false)
-            putExtra(CardIOActivity.EXTRA_HIDE_CARDIO_LOGO, true)
-            putExtra(CardIOActivity.EXTRA_USE_PAYPAL_ACTIONBAR_ICON, false)
-            putExtra(CardIOActivity.EXTRA_SCAN_EXPIRY, true)
-            putExtra(CardIOActivity.EXTRA_SUPPRESS_CONFIRMATION, true)
-        }
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_EXPIRY, true); // default: false
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_CVV, false); // default: false
+        scanIntent.putExtra(CardIOActivity.EXTRA_REQUIRE_POSTAL_CODE, false); // default: false
         startActivityForResult(scanIntent, SCAN_REQUEST_CODE)
     }
 
@@ -82,12 +76,19 @@ class MainActivity : AppCompatActivity() {
 
     fun proccessCardIO(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == SCAN_REQUEST_CODE) {
-            if (intent != null && intent.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
-                val scanResult: CreditCard =
+            if (data != null && data.hasExtra(CardIOActivity.EXTRA_SCAN_RESULT)) {
+                val scanResult: CreditCard? =
                     intent.getParcelableExtra(CardIOActivity.EXTRA_SCAN_RESULT)
-                number.text = scanResult.cardNumber
-                name.text = scanResult.cardholderName
-                date.text = "${scanResult.expiryMonth}/${scanResult.expiryYear}"
+                Log.d(
+                    "deb@",
+                    "scanResult ${scanResult?.formattedCardNumber} ${scanResult?.redactedCardNumber} ${scanResult?.cardNumber} intent ${data.hasExtra(
+                        CardIOActivity.EXTRA_SCAN_RESULT
+                    )}"
+                )
+                number.text = (scanResult?.formattedCardNumber ?: "null")
+                name.text = (scanResult?.cardholderName ?: "null")
+                date.text =
+                    "${scanResult?.expiryMonth ?: "null"}/${scanResult?.expiryYear ?: "null"}"
             }
         }
     }
